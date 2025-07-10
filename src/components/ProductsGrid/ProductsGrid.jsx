@@ -1,6 +1,7 @@
 import { useState } from "react";
 import productsData from "../../data/productsData";
 import ProductCard from "../ProductCard/ProductCard";
+import { toast } from "react-toastify";
 
 const ProductsGrid = () => {
   const [products, setProducts] = useState(productsData);
@@ -22,8 +23,18 @@ const ProductsGrid = () => {
     }
   };
 
+  const notify = () =>
+    toast.success("Item added to cart!", {
+      position: "top-right",
+      autoClose: 3000, // 3 seconds
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+    });
+
   const productsList = products.map((product) => (
-    <ProductCard key={product.id} product={product} />
+    <ProductCard key={product.id} product={product} notify={notify} />
   ));
 
   return (

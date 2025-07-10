@@ -3,6 +3,7 @@ import { useCart } from "../../contexts/CartContext";
 import SubstractFill from "../../assets/icons/subtract-fill.svg";
 import AddFill from "../../assets/icons/add-fill.svg";
 import DeleteBin from "../../assets/icons/delete-bin-line.svg";
+import { toast } from "react-toastify";
 
 const CartItem = ({ cartItem }) => {
   const { onChangeCartQuantity, onRemoveFromCart } = useCart();
@@ -14,6 +15,17 @@ const CartItem = ({ cartItem }) => {
     const newValue = Number(e.target.value) || 0;
     setQuantity("e.target.value");
     onChangeCartQuantity(cartItem.product.id, newValue);
+  };
+
+  const notify = () => {
+    toast.error("Item removed from cart!", {
+      position: "top-right",
+      autoClose: 3000, // 3 seconds
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+    });
   };
 
   return (
@@ -75,7 +87,10 @@ const CartItem = ({ cartItem }) => {
 
         {/* Product Remove Button */}
         <button
-          onClick={() => onRemoveFromCart(cartItem.product.id)}
+          onClick={() => {
+            onRemoveFromCart(cartItem.product.id);
+            notify();
+          }}
           className="absolute top-0 right-0 h-4 w-4 rounded-full cursor-pointer"
         >
           <img src={DeleteBin} alt="delete bin icon" />

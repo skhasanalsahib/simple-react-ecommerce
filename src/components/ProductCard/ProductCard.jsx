@@ -3,7 +3,7 @@ import AddToCartButton from "../Button/Button";
 import Button from "../Button/Button";
 import { useCart } from "../../contexts/CartContext";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, notify }) => {
   const { id, imageUrl, name, description, price } = product;
 
   const navigate = useNavigate();
@@ -47,6 +47,7 @@ const ProductCard = ({ product }) => {
           <Button
             onClick={() => {
               onAddToCart(product);
+              notify();
             }}
           >
             Add To Cart

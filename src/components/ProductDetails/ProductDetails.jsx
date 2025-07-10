@@ -1,10 +1,21 @@
 import { useCart } from "../../contexts/CartContext";
 import Button from "../Button/Button";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function ProductDetails({ product }) {
-  const { name, brand, imgUrl, price, description } = product;
+  const { name, brand, imageUrl, price, description } = product;
 
   const { onAddToCart } = useCart();
+
+  const notify = () =>
+    toast.success("Item added to cart!", {
+      position: "top-right",
+      autoClose: 3000, // 3 seconds
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+    });
 
   return (
     <section className="py-5 bg-white">
@@ -13,7 +24,7 @@ export default function ProductDetails({ product }) {
         <div className="flex flex-col md:flex-row items-center md:items-start md:gap-5 gap-3">
           {/* Image Wrapper */}
           <div className="w-full max-w-128 rounded-lg">
-            <img className="w-full rounded-lg" src={imgUrl} alt="" />
+            <img className="w-full rounded-lg" src={imageUrl} alt="" />
           </div>
 
           {/* Product Info */}
@@ -36,6 +47,7 @@ export default function ProductDetails({ product }) {
             <Button
               onClick={() => {
                 onAddToCart(product);
+                notify();
               }}
             >
               Add To Cart
