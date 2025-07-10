@@ -44,7 +44,6 @@ const ProductCard = ({ product }) => {
         <div className="flex justify-between mt-3">
           <h3 className="text-lg font-semibold">৳ {price}</h3>
 
-          <AddToCartButton product={product} />
           <Button
             onClick={() => {
               onAddToCart(product);

@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { useCart } from "../../contexts/CartContext";
+import SubstractFill from "../../assets/icons/subtract-fill.svg";
+import AddFill from "../../assets/icons/add-fill.svg";
+import DeleteBin from "../../assets/icons/delete-bin-line.svg";
 
 const CartItem = ({ cartItem }) => {
   const { onChangeCartQuantity, onRemoveFromCart } = useCart();
@@ -47,7 +50,7 @@ const CartItem = ({ cartItem }) => {
               }}
               className="h-7 w-7 p-1.5 bg-gray-200 rounded-full cursor-pointer"
             >
-              <img src="./subtract-fill.svg" alt="plus icon" />
+              <img src={SubstractFill} alt="plus icon" />
             </button>
             <input
               className="bg-gray-100 h-7 w-7 px-1 py-0.5 text-sm text-center rounded"
@@ -65,7 +68,7 @@ const CartItem = ({ cartItem }) => {
               }}
               className="h-7 w-7 p-1.5 bg-gray-200 rounded-full cursor-pointer"
             >
-              <img src="./add-fill.svg" alt="plus icon" />
+              <img src={AddFill} alt="plus icon" />
             </button>
           </div>
         </div>
@@ -75,7 +78,7 @@ const CartItem = ({ cartItem }) => {
           onClick={() => onRemoveFromCart(cartItem.product.id)}
           className="absolute top-0 right-0 h-4 w-4 rounded-full cursor-pointer"
         >
-          <img src="./delete-bin-line.svg" alt="delete bin icon" />
+          <img src={DeleteBin} alt="delete bin icon" />
         </button>
       </div>
     </div>

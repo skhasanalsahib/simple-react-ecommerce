@@ -1,6 +1,8 @@
 import ResponsiveMenu from "./ResponsiveMenu";
 import { useCart } from "../../contexts/CartContext";
 import { Link } from "react-router";
+import CartIcon from "../../assets/icons/shopping-cart-line.svg";
+import SearchIcon from "../../assets/icons/search-2-line.svg";
 
 const Navbar = () => {
   const { cartItems } = useCart();
@@ -44,17 +46,13 @@ const Navbar = () => {
           </button>
         </form> */}
           <button type="submit" className="px-1.5  shrink-0">
-            <img src="./search-2-line.svg" className="h-5" alt="search icon" />
+            <img src={SearchIcon} className="h-5" alt="search icon" />
           </button>
 
           {/* Cart */}
           <Link to={"/cart"} className="shrink-0">
             <div className="relative ">
-              <img
-                className="h-5"
-                src="./shopping-cart-line.svg"
-                alt="cart icon"
-              />
+              <img className="h-5" src={CartIcon} alt="cart icon" />
               {cartItems.length > 0 && (
                 <span className="absolute -top-2 -right-1.5 text-white text-sm font-semibold h-4.5 w-4.5 text-center rounded-full bg-blue-400">
                   {cartItems.length}
