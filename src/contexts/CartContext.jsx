@@ -5,7 +5,7 @@ import initialCart from "../data/intialCart";
 const CartContext = createContext(null);
 
 export const CartContextProvider = ({ children }) => {
-  const [cartItems, dispatch] = useReducer(cartReducer, initialCart);
+  const [cartItems, dispatch] = useReducer(cartReducer, []);
   // console.log(testCart);
   const addToCartHandler = (product) => {
     dispatch({

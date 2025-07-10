@@ -1,6 +1,7 @@
 import ResponsiveMenu from "./ResponsiveMenu";
 import { useCart } from "../../contexts/CartContext";
 import { Link } from "react-router";
+import SiteLogo from "/techmart-logo.png";
 import CartIcon from "../../assets/icons/shopping-cart-line.svg";
 import SearchIcon from "../../assets/icons/search-2-line.svg";
 
@@ -12,7 +13,7 @@ const Navbar = () => {
       <div className="container py-4 flex flex-wrap justify-between items-center gap-4 relative">
         {/* Site Logo */}
         <Link to={"/"}>
-          <h2 className="text-2xl font-bold sm:order-1">Logo</h2>
+          <img className="h-10" src={SiteLogo} alt="TechMart Logo" />
         </Link>
 
         {/* Navigation */}
@@ -54,8 +55,8 @@ const Navbar = () => {
             <div className="relative ">
               <img className="h-5" src={CartIcon} alt="cart icon" />
               {cartItems.length > 0 && (
-                <span className="absolute -top-2 -right-1.5 text-white text-sm font-semibold h-4.5 w-4.5 text-center rounded-full bg-blue-400">
-                  {cartItems.length}
+                <span className="absolute -top-2.5 -right-2.5 text-white text-xs font-medium h-5 w-5 grid place-items-center center rounded-full bg-blue-400">
+                  <span>{cartItems.length}</span>
                 </span>
               )}
             </div>
@@ -64,6 +65,12 @@ const Navbar = () => {
 
         {/* Responsive Menu */}
         <ResponsiveMenu />
+      </div>
+      <div className="bg-yellow-100 text-center py-2 text-sm text-yellow-800">
+        <span>
+          ⚠️ Disclaimer: All products on this site are fictional and cannot be
+          purchased.
+        </span>
       </div>
     </header>
   );

@@ -3,7 +3,7 @@ const productsData = [
     id: "FX001",
     name: "Zentra PulseBand X1",
     description:
-      "Lightweight neckband with deep bass, 20-hour battery, and magnetic earbuds.",
+      "Lightweight neckband with deep bass, 20-hour battery, and magnetic earbuds. Designed for all-day comfort, the flexible form factor rests gently around the neck while delivering immersive audio powered by tuned dynamic drivers. The built-in mic and voice assistant support keep you connected hands-free, whether you're taking calls or triggering smart commands. With IPX5 water resistance, it's ready for workouts, commutes, and everything in between. Plus, smart playback controls and quick pairing make it a perfect companion for both casual listeners and on-the-go professionals.",
     price: 2490,
     imageUrl: "/products/zentra-pulseband-x1.jpg",
     stock: 35,

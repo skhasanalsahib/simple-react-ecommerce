@@ -16,18 +16,18 @@ const ResponsiveMenu = () => {
         <img className="h-6" src={!isOpen ? MenuLine : CloseLine} alt="" />
       </button>
       {isOpen && (
-        <div className="absolute -bottom-21 w-[90%] translate-x-[50%] right-1/2 py-2.5 z-50">
-          <nav className="flex flex-col bg-blue-200 rounded">
+        <div className="absolute -bottom-24 w-[90%] translate-x-[50%] right-1/2 py-2.5 z-50">
+          <nav className="flex flex-col bg-white/70 rounded backdrop-blur-sm">
             <Link
               to={"/"}
-              className="font-semibold text-base text-blue-500 text-center border-b border-b-white py-1.5"
+              className="font-medium text-lg text-blue-500 text-center py-1.5"
             >
               Home
             </Link>
 
             <Link
               to={"/about"}
-              className="font-semibold text-base text-blue-500 text-center border-b border-b-white py-1.5"
+              className="font-medium text-lg text-blue-500 text-center py-1.5"
             >
               About
             </Link>

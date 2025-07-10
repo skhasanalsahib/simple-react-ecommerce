@@ -21,14 +21,14 @@ export default function ProductDetails({ product }) {
     <section className="py-5 bg-white">
       <div className="container">
         {/* Product Image in info */}
-        <div className="flex flex-col md:flex-row items-center md:items-start md:gap-5 gap-3">
+        <div className="flex flex-col md:flex-row items-center md:items-start md:gap-10 gap-3">
           {/* Image Wrapper */}
-          <div className="w-full max-w-128 rounded-lg">
+          <div className="flex-1 w-full max-w-128 rounded-lg">
             <img className="w-full rounded-lg" src={imageUrl} alt="" />
           </div>
 
           {/* Product Info */}
-          <div className="">
+          <div className="flex-1">
             <h2 className="text-xl sm:text-3xl font-semibold leading-[100%] sm:mb-1">
               {name}
             </h2>

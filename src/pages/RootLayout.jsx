@@ -8,7 +8,7 @@ export const RootLayout = () => {
   return (
     <>
       <CartContextProvider>
-        <ToastContainer />
+        <ToastContainer className={"mt-15"} />
         <Navbar />
         <Outlet />
         <Footer />
