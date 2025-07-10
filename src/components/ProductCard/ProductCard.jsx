@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import AddToCartButton from "../Button/Button";
 import Button from "../Button/Button";
-import { useCart } from "../../contexts/cartContext";
+import { useCart } from "../../contexts/CartContext";
 
 const ProductCard = ({ product }) => {
   const { id, imageUrl, name, description, price } = product;

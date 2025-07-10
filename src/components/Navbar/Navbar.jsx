@@ -1,5 +1,5 @@
 import ResponsiveMenu from "./ResponsiveMenu";
-import { useCart } from "../../contexts/cartContext";
+import { useCart } from "../../contexts/CartContext";
 import { Link } from "react-router";
 
 const Navbar = () => {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useCart } from "../../contexts/cartContext";
+import { useCart } from "../../contexts/CartContext";
 
 const CartItem = ({ cartItem }) => {
   const { onChangeCartQuantity, onRemoveFromCart } = useCart();

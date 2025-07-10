@@ -1,4 +1,4 @@
-import { useCart } from "../../contexts/cartContext";
+import { useCart } from "../../contexts/CartContext";
 import subTotalPrice, { totalDeliveryFee } from "../../../utils/subTotalPrice";
 import CartItem from "./CartItem";
 import { useNavigate } from "react-router";
