@@ -24,7 +24,12 @@ export default function ProductDetails({ product }) {
         <div className="flex flex-col md:flex-row items-center md:items-start md:gap-10 gap-3">
           {/* Image Wrapper */}
           <div className="flex-1 w-full max-w-128 rounded-lg">
-            <img className="w-full rounded-lg" src={imageUrl} alt="" />
+            <img
+              className="w-full rounded-lg"
+              src={imageUrl}
+              loading="lazy"
+              alt={name}
+            />
           </div>
 
           {/* Product Info */}

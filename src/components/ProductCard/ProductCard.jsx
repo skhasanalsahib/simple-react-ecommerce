@@ -22,6 +22,7 @@ const ProductCard = ({ product, notify }) => {
           className="h-64 object-contain md:object-cover w-full"
           src={imageUrl}
           alt={name}
+          loading="lazy"
         />
       </div>
 
