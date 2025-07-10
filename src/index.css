@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import "tailwindcss";
+
+@tailwind utilities;
+/* @tailwind components; */
+
+@layer base {
+  body {
+    @apply bg-gray-100;
+    font-family: "Poppins", sans-serif;
+  }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"] {
+    -webkit-appearance: none;
+    margin: 0;
+    -moz-appearance: textfield !important;
+  }
+}
+
+@layer utilities {
+  .container {
+    @apply max-w-7xl w-full mx-auto px-5;
+  }
+
+  .order-summary {
+    @apply w-full flex justify-between items-center py-1.5 text-sm;
+  }
+}
+
+@layer components {
+  .primary-btn {
+    @apply px-2.5 py-1.5 bg-blue-400 text-sm text-white rounded-sm cursor-pointer;
+  }
+}

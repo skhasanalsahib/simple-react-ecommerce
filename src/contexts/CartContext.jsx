@@ -1,0 +1,59 @@
+import { createContext, useContext, useReducer } from "react";
+import cartReducer from "../reducers/cartReducer";
+import initialCart from "../data/intialCart";
+
+const CartContext = createContext(null);
+
+export const CartContextProvider = ({ children }) => {
+  const [cartItems, dispatch] = useReducer(cartReducer, initialCart);
+  // console.log(testCart);
+  const addToCartHandler = (product) => {
+    dispatch({
+      type: "addToCart",
+      product: {
+        ...product,
+      },
+    });
+  };
+
+  const increaseCartQuantityHandler = (id) => {
+    dispatch({
+      type: "quantityUpdate",
+      id,
+      quantity:
+        cartItems.filter((item) => item.product.id === id)[0].quantity + 1,
+    });
+  };
+
+  const changeCartQuantityHandler = (id, quantity) => {
+    dispatch({
+      type: "quantityUpdate",
+      id,
+      quantity,
+    });
+  };
+
+  const removeFromCartHandler = (id) => {
+    dispatch({
+      type: "removeFromCart",
+      id,
+    });
+  };
+
+  return (
+    <CartContext
+      value={{
+        cartItems,
+        onAddToCart: addToCartHandler,
+        onChangeCartQuantity: changeCartQuantityHandler,
+        onRemoveFromCart: removeFromCartHandler,
+      }}
+    >
+      {children}
+    </CartContext>
+  );
+};
+
+export const useCart = () => {
+  return useContext(CartContext);
+};
