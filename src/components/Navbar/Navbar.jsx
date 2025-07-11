@@ -4,6 +4,8 @@ import { Link } from "react-router";
 import SiteLogo from "/techmart-logo.png";
 import CartIcon from "../../assets/icons/shopping-cart-line.svg";
 import SearchIcon from "../../assets/icons/search-2-line.svg";
+import SearchIconBlack from "../../assets/icons/search-2-line-black.svg";
+import Search from "../Search/Search";
 
 const Navbar = () => {
   const { cartItems } = useCart();
@@ -31,7 +33,7 @@ const Navbar = () => {
         </nav>
 
         {/* Cart and SearchBar */}
-        <div className="flex gap-4 flex-1 justify-end sm:order-3 ">
+        <div className="flex gap-4 flex-1 justify-end items-center sm:order-3 ">
           {/* Search bar */}
           {/* <form className="border border-gray-400 order-3  rounded-md flex">
           <input
@@ -46,12 +48,12 @@ const Navbar = () => {
             <img src="./search-2-line.svg" className="h-5" alt="search icon" />
           </button>
         </form> */}
-          <button type="submit" className="px-1.5  shrink-0">
-            <img src={SearchIcon} className="h-5" alt="search icon" />
-          </button>
+
+          {/* Searchbar */}
+          <Search />
 
           {/* Cart */}
-          <Link to={"/cart"} className="shrink-0">
+          <Link to={"/cart"} className="shrink-0 order-2 sm:order-1">
             <div className="relative ">
               <img className="h-5" src={CartIcon} alt="cart icon" />
               {cartItems.length > 0 && (
@@ -66,6 +68,7 @@ const Navbar = () => {
         {/* Responsive Menu */}
         <ResponsiveMenu />
       </div>
+
       <div className="bg-yellow-100 text-center py-2 text-sm text-yellow-800">
         <span>
           ⚠️ Disclaimer: All products on this site are fictional and cannot be

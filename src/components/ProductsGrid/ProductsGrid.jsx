@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import productsData from "../../data/productsData";
 import ProductCard from "../ProductCard/ProductCard";
 import { toast } from "react-toastify";
+import { useSearchParams } from "react-router";
 
 const ProductsGrid = () => {
   const [products, setProducts] = useState(productsData);
@@ -10,18 +11,36 @@ const ProductsGrid = () => {
 
   //   console.log(sortBy);
 
-  const filterHandler = (sortBy) => {
-    switch (sortBy) {
+  const [searchTerm] = useSearchParams();
+  const searchQuery = searchTerm.get("search")?.toLowerCase() || "";
+
+  const filterHandler = (criteria) => {
+    switch (criteria) {
+      case "search":
+        {
+          const searchResult = searchQuery
+            ? products.filter((product) =>
+                product.name.toLowerCase().includes(searchQuery)
+              )
+            : productsData;
+          setProducts([...searchResult]);
+        }
+        break;
       case "lowToHigh":
         setProducts([...productsData].sort((a, b) => a.price - b.price));
         break;
       case "highToLow":
         setProducts([...productsData].sort((a, b) => b.price - a.price));
         break;
+
       default:
         setProducts([...productsData]);
     }
   };
+
+  useEffect(() => {
+    filterHandler("search");
+  }, [searchTerm]);
 
   const notify = () =>
     toast.success("Item added to cart!", {
@@ -46,7 +65,6 @@ const ProductsGrid = () => {
             <span className="text-sm font-semibold">Sort by: </span>
             <select
               onChange={(e) => {
-                console.log(filterHandler(e.target.value));
                 setSortBy(e.target.value);
               }}
               className="rounded-sm bg-gray-300/50 border-0 text-sm ms-2 px-1 py-1 outline-0 focus:outline-0"

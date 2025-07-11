@@ -1,4 +1,3 @@
-import ProductsGrid from "../components/ProductsGrid/ProductsGrid";
 import ProductDetails from "../components/ProductDetails/ProductDetails";
 import { useParams } from "react-router";
 import productsData from "../data/productsData";
