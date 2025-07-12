@@ -12,7 +12,7 @@ const Navbar = () => {
   const { visibleCartItems } = useCart();
 
   return (
-    <header className="w-full shadow bg-white sticky top-0 z-50">
+    <header className={`w-full shadow bg-white md:sticky fixed top-0 z-50`}>
       <div className="container py-4 flex flex-wrap justify-between items-center gap-4 relative">
         {/* Site Logo */}
         <Link to={"/"}>
@@ -20,7 +20,7 @@ const Navbar = () => {
         </Link>
 
         {/* Navigation */}
-        <nav className="gap-5 order-2 flex-10 justify-center items-center hidden sm:flex">
+        <nav className="gap-5 order-2 flex-grow justify-center items-center hidden sm:flex">
           <Link to={"/"} className="font-bold">
             Home
           </Link>
@@ -71,7 +71,9 @@ const Navbar = () => {
       </div>
       <ResponsiveSearch />
 
-      <div className="bg-yellow-100 text-center py-2 text-xs text-yellow-800">
+      <div
+        className={`bg-yellow-100 text-center py-2 text-xs text-yellow-800 `}
+      >
         <span>
           ⚠️ Disclaimer: All products on this site are fictional and cannot be
           purchased.
