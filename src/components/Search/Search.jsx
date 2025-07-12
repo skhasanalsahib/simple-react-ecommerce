@@ -1,11 +1,18 @@
 import SearchIcon from "../../assets/icons/search-2-line.svg";
 import SearchIconBlack from "../../assets/icons/search-2-line-black.svg";
 import { useSearch } from "../../contexts/SearchContext";
+import { useEffect, useRef } from "react";
 
 const Search = () => {
-  const { isSearch, inputRef, onClick, searchQuery, onSearch } = useSearch();
+  const { isSearch, onClick, searchQuery, onSearch } = useSearch();
 
-  console.log(searchQuery);
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (isSearch) {
+      inputRef.current.focus();
+    }
+  }, [isSearch]);
 
   return (
     <div

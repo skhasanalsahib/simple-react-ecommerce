@@ -6,13 +6,11 @@ const SearchContext = createContext(null);
 export const SearchContextProvider = ({ children }) => {
   const [isSearch, setIsSearch] = useState(false);
 
-  const inputRef = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
 
   const clickHandler = (e) => {
     e.preventDefault();
-    console.log("Clicked");
     setIsSearch(!isSearch);
   };
 
@@ -28,10 +26,8 @@ export const SearchContextProvider = ({ children }) => {
     <SearchContext
       value={{
         isSearch,
-        inputRef,
         navigate,
         onClick: clickHandler,
-
         searchQuery,
         onSearch: searchHandler,
       }}
