@@ -33,15 +33,17 @@ const CartItem = ({ cartItem }) => {
       {/* image container */}
       <div className="">
         <img
-          className="w-[100px] object-cover rounded"
-          src="https://placehold.co/100"
-          alt=""
+          className="w-[100px] object-cover rounded shadow-xs"
+          src={cartItem.product.imageUrl}
+          alt={cartItem.product.name}
         />
       </div>
 
       {/* Product Info */}
       <div className="w-full flex flex-col justify-between relative">
-        <h2 className=" text-xs max-w-[90%]">{cartItem.product.name}</h2>
+        <h2 className=" text-xs sm:text-sm md:text-base max-w-[90%]">
+          {cartItem.product.name}
+        </h2>
 
         {/* Price Calculation */}
         <span className="text-gray-500 text-xs block -mt-2">
@@ -51,7 +53,9 @@ const CartItem = ({ cartItem }) => {
         {/* Price and Quantity Control Container */}
         <div className="w-full flex justify-between">
           {/* Price */}
-          <h3 className="">৳ {cartItem.product.price * cartItem.quantity}</h3>
+          <h3 className="text-lg md:text-xl font-medium">
+            ৳ {cartItem.product.price * cartItem.quantity}
+          </h3>
 
           {/* Quantity Update */}
           <div className="flex gap-1.5 items-center">

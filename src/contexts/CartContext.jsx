@@ -15,14 +15,14 @@ export const CartContextProvider = ({ children }) => {
     });
   };
 
-  const increaseCartQuantityHandler = (id) => {
-    dispatch({
-      type: "quantityUpdate",
-      id,
-      quantity:
-        cartItems.filter((item) => item.product.id === id)[0].quantity + 1,
-    });
-  };
+  // const increaseCartQuantityHandler = (id) => {
+  //   dispatch({
+  //     type: "quantityUpdate",
+  //     id,
+  //     quantity:
+  //       cartItems.filter((item) => item.product.id === id)[0].quantity + 1,
+  //   });
+  // };
 
   const changeCartQuantityHandler = (id, quantity) => {
     dispatch({
@@ -39,10 +39,12 @@ export const CartContextProvider = ({ children }) => {
     });
   };
 
+  const visibleCartItems = cartItems.filter((item) => item.quantity > 0);
+
   return (
     <CartContext
       value={{
-        cartItems,
+        visibleCartItems,
         onAddToCart: addToCartHandler,
         onChangeCartQuantity: changeCartQuantityHandler,
         onRemoveFromCart: removeFromCartHandler,

@@ -4,9 +4,9 @@ import CartItem from "./CartItem";
 import { useNavigate } from "react-router";
 
 const CartItemsList = () => {
-  const { cartItems } = useCart();
-  const subTotal = subTotalPrice(cartItems);
-  const deliveryFee = totalDeliveryFee(cartItems);
+  const { visibleCartItems } = useCart();
+  const subTotal = subTotalPrice(visibleCartItems);
+  const deliveryFee = totalDeliveryFee(visibleCartItems);
 
   const total = subTotal + deliveryFee;
 
@@ -17,10 +17,12 @@ const CartItemsList = () => {
       <div className="container block md:flex gap-4 justify-between items-start">
         {/* Items List */}
         <div className="min-h-[300px] flex-3/4 space-y-4">
-          {cartItems?.length > 0 ? (
-            cartItems.map((item) => (
-              <CartItem key={item.product.id} cartItem={item} />
-            ))
+          {visibleCartItems.length > 0 ? (
+            visibleCartItems.map((item) =>
+              item.quantity < 1 ? null : (
+                <CartItem key={item.product.id} cartItem={item} />
+              )
+            )
           ) : (
             <div className=" flex flex-col gap-2 justify-center items-center">
               <h3 className="text-xl font-medium">Your cart is empty</h3>

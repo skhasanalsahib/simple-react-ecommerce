@@ -4,7 +4,7 @@ import { useSearch } from "../../contexts/SearchContext";
 import { useEffect, useRef } from "react";
 
 const Search = () => {
-  const { isSearch, onClick, searchQuery, onSearch } = useSearch();
+  const { isSearch, onClick, onSearch } = useSearch();
 
   const inputRef = useRef(null);
 

@@ -1,4 +1,4 @@
-import { createContext, useContext, useRef, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 
 const SearchContext = createContext(null);

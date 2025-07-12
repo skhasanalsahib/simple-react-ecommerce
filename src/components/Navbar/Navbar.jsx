@@ -9,7 +9,7 @@ import Search from "../Search/Search";
 import ResponsiveSearch from "../Search/ResponsiveSearch";
 
 const Navbar = () => {
-  const { cartItems } = useCart();
+  const { visibleCartItems } = useCart();
 
   return (
     <header className="w-full shadow bg-white sticky top-0 z-50">
@@ -57,9 +57,9 @@ const Navbar = () => {
           <Link to={"/cart"} className="shrink-0 order-2 sm:order-1">
             <div className="relative ">
               <img className="h-5" src={CartIcon} alt="cart icon" />
-              {cartItems.length > 0 && (
+              {visibleCartItems.length > 0 && (
                 <span className="absolute -top-2.5 -right-2.5 text-white text-xs font-medium h-5 w-5 grid place-items-center center rounded-full bg-blue-400">
-                  <span>{cartItems.length}</span>
+                  <span>{visibleCartItems.length}</span>
                 </span>
               )}
             </div>
