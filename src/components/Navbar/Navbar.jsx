@@ -6,6 +6,7 @@ import CartIcon from "../../assets/icons/shopping-cart-line.svg";
 import SearchIcon from "../../assets/icons/search-2-line.svg";
 import SearchIconBlack from "../../assets/icons/search-2-line-black.svg";
 import Search from "../Search/Search";
+import ResponsiveSearch from "../Search/ResponsiveSearch";
 
 const Navbar = () => {
   const { cartItems } = useCart();
@@ -68,8 +69,9 @@ const Navbar = () => {
         {/* Responsive Menu */}
         <ResponsiveMenu />
       </div>
+      <ResponsiveSearch />
 
-      <div className="bg-yellow-100 text-center py-2 text-sm text-yellow-800">
+      <div className="bg-yellow-100 text-center py-2 text-xs text-yellow-800">
         <span>
           ⚠️ Disclaimer: All products on this site are fictional and cannot be
           purchased.

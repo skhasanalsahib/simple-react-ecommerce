@@ -11,7 +11,7 @@ const ResponsiveMenu = () => {
   };
 
   return (
-    <Fragment className="order-2 sm:order-3">
+    <div className="order-2 sm:order-3">
       <button className="block sm:hidden" onClick={openHandler}>
         <img className="h-6" src={!isOpen ? MenuLine : CloseLine} alt="" />
       </button>
@@ -34,7 +34,7 @@ const ResponsiveMenu = () => {
           </nav>
         </div>
       )}
-    </Fragment>
+    </div>
   );
 };
 

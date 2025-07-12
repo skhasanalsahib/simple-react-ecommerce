@@ -1,37 +1,20 @@
-import { useRef, useState } from "react";
 import SearchIcon from "../../assets/icons/search-2-line.svg";
 import SearchIconBlack from "../../assets/icons/search-2-line-black.svg";
-import { useLocation, useNavigate } from "react-router";
+import { useSearch } from "../../contexts/SearchContext";
 
 const Search = () => {
-  const [isSearch, setIsSearch] = useState(false);
+  const { isSearch, inputRef, onClick, searchQuery, onSearch } = useSearch();
 
-  const inputRef = useRef(null);
-
-  const navigate = useNavigate();
-  const searchHandler = (e) => {
-    e.preventDefault();
-    setIsSearch(!isSearch);
-    !isSearch && inputRef.current.focus();
-  };
-
-  const location = useLocation();
-
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const searchTermHandler = (e) => {
-    e.preventDefault();
-    if (searchTerm.trim()) {
-      navigate(`/?search=${encodeURIComponent(searchTerm.trim())}`);
-    } else if (location.pathname == "/") {
-      navigate("/");
-    }
-  };
+  console.log(searchQuery);
 
   return (
-    <form className="flex border border-gray-300 rounded-md order-3 sm:order-1">
+    <div
+      className={`hidden sm:flex ${
+        isSearch ? "border border-gray-300" : "border-0"
+      } rounded-md order-3 sm:order-1`}
+    >
       <input
-        onChange={(e) => setSearchTerm(e.target.value)}
+        onChange={(e) => onSearch(e)}
         ref={inputRef}
         type="search"
         className={`h-7 ${
@@ -44,8 +27,8 @@ const Search = () => {
       {isSearch ? (
         <>
           <button
+            onClick={(e) => onClick(e)}
             type="submit"
-            onClick={(e) => searchTermHandler(e)}
             className="h-7 w-7 shrink-0 flex justify-center items-center bg-blue-400 rounded-r-md"
           >
             <img src={SearchIcon} className="h-5" alt="search icon" />
@@ -53,13 +36,17 @@ const Search = () => {
         </>
       ) : (
         <button
-          onClick={(e) => searchHandler(e)}
+          onClick={(e) => {
+            e.preventDefault();
+            onClick(e);
+            inputRef.current.focus();
+          }}
           className="h-7 w-7 shrink-0 flex justify-center items-center"
         >
           <img src={SearchIconBlack} className="h-6" alt="search icon" />
         </button>
       )}
-    </form>
+    </div>
   );
 };
 

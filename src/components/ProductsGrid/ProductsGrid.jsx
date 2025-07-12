@@ -3,44 +3,83 @@ import productsData from "../../data/productsData";
 import ProductCard from "../ProductCard/ProductCard";
 import { toast } from "react-toastify";
 import { useSearchParams } from "react-router";
+import { useSearch } from "../../contexts/SearchContext";
 
 const ProductsGrid = () => {
+  const { searchQuery } = useSearch();
+
   const [products, setProducts] = useState(productsData);
 
   const [sortBy, setSortBy] = useState("default");
 
-  //   console.log(sortBy);
+  const searchFunc = (searchKey, productList) => {
+    if (searchKey === "") return productList;
 
-  const [searchTerm] = useSearchParams();
-  const searchQuery = searchTerm.get("search")?.toLowerCase() || "";
-
-  const filterHandler = (criteria) => {
-    switch (criteria) {
-      case "search":
-        {
-          const searchResult = searchQuery
-            ? products.filter((product) =>
-                product.name.toLowerCase().includes(searchQuery)
-              )
-            : productsData;
-          setProducts([...searchResult]);
-        }
-        break;
-      case "lowToHigh":
-        setProducts([...productsData].sort((a, b) => a.price - b.price));
-        break;
-      case "highToLow":
-        setProducts([...productsData].sort((a, b) => b.price - a.price));
-        break;
-
-      default:
-        setProducts([...productsData]);
-    }
+    return productList.filter((product) =>
+      product.name.toLowerCase().includes(searchKey)
+    );
   };
 
   useEffect(() => {
-    filterHandler("search");
-  }, [searchTerm]);
+    const searchKey = searchQuery.trim().toLowerCase();
+    let filteredProducts = [...productsData];
+
+    if (sortBy === "lowToHigh") {
+      filteredProducts.sort((a, b) => a.price - b.price);
+    } else if (sortBy === "highToLow") {
+      filteredProducts.sort((a, b) => b.price - a.price);
+    }
+
+    filteredProducts = searchFunc(searchKey, filteredProducts);
+
+    setProducts(filteredProducts);
+    return;
+
+    // const sortByHandler = (criteria) => {
+    //   if (criteria === "default") return;
+    //   if (criteria === "lowToHigh") {
+    //     const sorted = [products.];
+    //     return setProducts(sorted);
+    //   }
+    //   if (criteria === "highToLow") {
+    //     const sorted = products.sort((a, b) => b.price - a.price);
+    //     return setProducts(sorted);
+    //   }
+    // };
+  }, [searchQuery, sortBy]);
+
+  //   console.log(sortBy);
+
+  // const [searchTerm] = useSearchParams();
+  // const searchQuery = searchTerm.get("search")?.toLowerCase() || "";
+
+  // const filterHandler = (criteria) => {
+  //   switch (criteria) {
+  //     case "search":
+  //       {
+  //         const searchResult = searchQuery
+  //           ? products.filter((product) =>
+  //               product.name.toLowerCase().includes(searchQuery)
+  //             )
+  //           : productsData;
+  //         setProducts([...searchResult]);
+  //       }
+  //       break;
+  //     case "lowToHigh":
+  //       setProducts([...productsData].sort((a, b) => a.price - b.price));
+  //       break;
+  //     case "highToLow":
+  //       setProducts([...productsData].sort((a, b) => b.price - a.price));
+  //       break;
+
+  //     default:
+  //       setProducts([...productsData]);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   filterHandler("search");
+  // }, [searchTerm]);
 
   const notify = () =>
     toast.success("Item added to cart!", {
@@ -66,6 +105,7 @@ const ProductsGrid = () => {
             <select
               onChange={(e) => {
                 setSortBy(e.target.value);
+                console.log(e.target.value);
               }}
               className="rounded-sm bg-gray-300/50 border-0 text-sm ms-2 px-1 py-1 outline-0 focus:outline-0"
               name="sort"
