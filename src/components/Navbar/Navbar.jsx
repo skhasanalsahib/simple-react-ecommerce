@@ -20,7 +20,7 @@ const Navbar = () => {
         </Link>
 
         {/* Navigation */}
-        <nav className="gap-5 order-2 flex-grow justify-center items-center hidden sm:flex">
+        <nav className="gap-5 order-2 basis-[60%] flex-grow justify-center items-center hidden sm:flex">
           <Link to={"/"} className="font-bold">
             Home
           </Link>
