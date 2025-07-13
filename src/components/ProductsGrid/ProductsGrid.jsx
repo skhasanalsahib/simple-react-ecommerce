@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import productsData from "../../data/productsData";
 import ProductCard from "../ProductCard/ProductCard";
 import { toast } from "react-toastify";
-import { useSearchParams } from "react-router";
 import { useSearch } from "../../contexts/SearchContext";
 
 const ProductsGrid = () => {
@@ -119,9 +118,15 @@ const ProductsGrid = () => {
         </div>
 
         {/* Product Grid */}
-        <div className="grid gap-4 grid-cols-1 grid-rows-[420px] sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mt-4">
-          {productsList}
-        </div>
+        {products.length > 0 ? (
+          <div className="grid gap-4 grid-cols-1 grid-rows-[420px] sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mt-4">
+            {productsList}
+          </div>
+        ) : (
+          <h1 className="text-2xl font-semibold text-gray-400 text-center h-[30vh] md:h-[50vh] w-full grid place-items-center">
+            Product not found :(
+          </h1>
+        )}
       </div>
     </section>
   );

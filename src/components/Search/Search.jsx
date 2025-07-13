@@ -27,7 +27,7 @@ const Search = () => {
         className={`h-7 ${
           !isSearch
             ? "w-0"
-            : "w-40 sm:w-60 md:w-80 px-2 py-.5 text-xs outline-0 focus:outline-0"
+            : "w-40 sm:w-60 md:w-50 px-2 py-.5 text-xs outline-0 focus:outline-0"
         }  rounded-l-md transition-all duration-300 ease-in-out`}
         placeholder="Search..."
       />
