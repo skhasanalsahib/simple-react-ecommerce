@@ -12,7 +12,7 @@ const Navbar = () => {
   const { visibleCartItems } = useCart();
 
   return (
-    <header className={`w-full shadow bg-white md:sticky fixed top-0 z-50`}>
+    <header className={`w-full shadow bg-white sticky top-0 z-50`}>
       <div className="container py-4 flex flex-wrap justify-between items-center gap-4 relative">
         {/* Site Logo */}
         <Link to={"/"}>
